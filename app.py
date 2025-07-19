@@ -151,12 +151,6 @@ def disease_prediction():
 
 
 def weather_fetch(city_name):
-    """
-    Fetches the temperature and humidity of a city from the OpenWeatherMap API.
-
-    :param city_name: Name of the city.
-    :return: Tuple containing temperature (in Celsius) and humidity. Returns None if city not found or API request fails.
-    """
     try:
         api_key = "bc552d5a6eb478cfe2744823a98ae3f6"
         base_url = "https://api.openweathermap.org/data/2.5/weather?"
@@ -230,12 +224,7 @@ def predictkidney():
         data = fertlizer_model.predict(to_predict)
         da=fertlizer_model_org.predict(to_predict)
         return render_template("fertilizer_prediction_result.html", name=data[0],na=da[0])
-
-
-@app.route('/predict-fertilizer_organic', methods=['POST'])
-
-
-    
+@app.route('/predict-fertilizer_organic', methods=['POST'])    
 @app.route('/predict-yield', methods=['POST'])
 def yield_prediction():
     title = 'Yield Prediction'
@@ -254,9 +243,6 @@ def yield_prediction():
         prediction_yield = predict_yield(State_Name, dt[District_Name], Crop_Year, Season, Crop, Area)
 
         return render_template('yield_prediction_result.html', prediction_yield=prediction_yield, title=title)
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
